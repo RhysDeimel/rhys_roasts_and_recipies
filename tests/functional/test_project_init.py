@@ -3,25 +3,30 @@ from roasts_and_recipies import create_app
 
 
 @pytest.fixture
-def firefox():
+def browser():
     from selenium import webdriver
 
-    browser = webdriver.Firefox()
+    b = webdriver.Firefox()
 
-    yield browser
+    yield b
 
-    browser.quit()
+    b.quit()
 
 
-def test_project_init(firefox):
-    firefox.get("http://localhost:5000")
+# def test_project_init(browser):
+#     browser.get("http://localhost:5000")
 
-    assert "Hello, index!" in firefox.page_source
-
+#     assert "Hello, index!" in browser.page_source
 
 
 # Kristen has heard about Rhys' new cooking website. She goes
 # to check out it's homepage
+def test_check_can_open_homepage(browser):
+    browser.get("http://localhost:5000")
+
+    assert "Hello, index!" in browser.page_source
+    assert "Rhys' Roasts" in browser.title
+
 
 # She notices the page title and header mention recipies
 
@@ -31,7 +36,7 @@ def test_project_init(firefox):
 # She adds the recipe to the recipe list and receives feedback
 # that it has been added
 
-# She decides to search for seasonal recipies. When she hits enter, 
+# She decides to search for seasonal recipies. When she hits enter,
 # the page updates, and now the page lists seasonal recipes
 
 # She adds the recipe to the recipe list and receives feedback

@@ -24,8 +24,8 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from roasts_and_recipies import hello
+    from roasts_and_recipies import site
 
-    app.register_blueprint(hello.bp)
+    app.register_blueprint(site.bp)
 
     return app

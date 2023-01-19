@@ -1,6 +1,7 @@
 import pytest
 from roasts_and_recipies import create_app
 
+
 @pytest.fixture
 def app():
     """Create and configure a new app instance for each test."""
